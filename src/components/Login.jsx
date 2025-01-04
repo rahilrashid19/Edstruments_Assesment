@@ -1,12 +1,17 @@
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user session exists in localStorage
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const validate = (values) => {
     const errors = {};
@@ -41,14 +46,16 @@ const Login = () => {
     },
     validate,
     onSubmit: (values) => {
-      setEmail(values.email);
-      setPassword(values.password);
+      // Save user session to localStorage
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ email: values.email, password: values.password })
+      );
+
+      // Navigate to the home page
+      navigate("/home");
     },
   });
-
-  if (email && password) {
-    navigate("/home");
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
