@@ -6,6 +6,7 @@ const Navbar = () => {
   const handleLogout = () => {
     // Clear session data from localStorage
     localStorage.removeItem("user");
+    localStorage.removeItem("invoiceData");
     // Redirect to login page
     navigate("/login");
   };
@@ -15,7 +16,9 @@ const Navbar = () => {
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <span className="text-white text-2xl font-bold">Edstruments</span>
+            <span className="text-white text-2xl font-bold">
+              Invoice Manager
+            </span>
           </div>
           <div>
             <button
