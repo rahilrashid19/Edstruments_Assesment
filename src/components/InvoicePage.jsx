@@ -94,12 +94,15 @@ const InvoicePage = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       <form onSubmit={formik.handleSubmit} noValidate>
         <div className="max-w-6xl mx-auto border rounded-md bg-white">
-          <div className="flex items-center gap-4 mb-6 p-6 justify-between">
-            <button type="button" className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 p-6 justify-between">
+            <button
+              type="button"
+              className="flex items-center gap-2 mb-4 sm:mb-0"
+            >
               <ArrowLeft className="w-4 h-4" />
               Create New Invoice
             </button>
-            <div className="w-[40%] flex justify-around items-center mr-[30%]">
+            <div className="w-full sm:w-[40%] flex flex-col sm:flex-row justify-around items-center sm:mr-[30%]">
               <NavLink
                 to="/home"
                 className={({ isActive }) =>
